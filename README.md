@@ -26,6 +26,10 @@
 4. 提交并推送：`git add . && git commit -m "新增：XXX" && git push`
    约一分钟后线上更新。
 
+## 日间 / 夜间
+
+主页与文章页右上角有 ☾/☀ 切换，选择会被浏览器记住（localStorage 键 `ye-theme`），首次访问跟随系统深色偏好，加载无闪烁。新文章想要同样效果，照搬 `dengshuikai.html` 的主题脚本（`<head>` 一段 + `</body>` 前一段）与 `.theme-toggle` 按钮、`[data-theme="dark"]` 样式即可，或直接交给我。
+
 ## 关于
 
 纯静态 HTML，无需构建；本仓库独立管理。
