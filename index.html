@@ -61,20 +61,24 @@
   }
   .seal{
     flex:none;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:56px;height:56px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    place-items:center;
+    width:66px;height:66px;
+    padding:6px;
     background:var(--oxblood);
     color:var(--paper);
     font-family:var(--serif);
     font-weight:700;
-    font-size:32px;
+    font-size:20px;
     line-height:1;
+    letter-spacing:0;
     border-radius:4px;
     transform:rotate(-4deg);
     user-select:none;
   }
+  .seal span{display:block;}
   .wordmark{
     font-family:var(--serif);
     font-weight:700;
@@ -200,7 +204,7 @@
     body{font-size:17px;}
     .wrap{padding:64px 20px 100px;}
     .intro{padding-bottom:36px;}
-    .seal{width:48px;height:48px;font-size:27px;}
+    .seal{width:58px;height:58px;font-size:17px;}
     .wordmark{letter-spacing:.12em;}
     .entry-meta .read{margin-left:0;width:100%;}
   }
@@ -212,7 +216,7 @@
   <header class="intro">
     <p class="eyebrow">随笔 · Essays</p>
     <div class="logo">
-      <span class="seal" aria-hidden="true">晓</span>
+      <span class="seal" aria-hidden="true"><span>夜</span><span>话</span><span>晓</span><span>言</span></span>
       <h1 class="wordmark">夜话晓言</h1>
     </div>
     <p class="byline"><span class="by-tag">文</span><span class="by-name">曾晓鹏</span></p>
