@@ -90,27 +90,29 @@
     margin:0 0 26px;
     font-weight:600;
   }
-  .seal{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr 1fr;
-    place-items:center;
-    width:88px;height:88px;
-    padding:8px;
-    margin:0 0 24px;
-    background:var(--oxblood);
-    color:var(--paper);
+  .logo{
+    position:relative;
+    display:inline-block;
+    margin:0 0 30px;
     font-family:var(--serif);
     font-weight:700;
-    font-size:27px;
-    line-height:1;
-    letter-spacing:0;
-    border-radius:5px;
-    transform:rotate(-4deg);
+    font-size:clamp(42px,10vw,60px);
+    line-height:1.05;
+    letter-spacing:.14em;
+    color:var(--ink);
     user-select:none;
-    transition:background-color .35s ease, color .35s ease;
+    transition:color .35s ease;
   }
-  .seal span{display:block;}
+  .logo::after{
+    content:"";
+    position:absolute;
+    left:3px;
+    bottom:-13px;
+    width:42px;height:3px;
+    background:var(--oxblood);
+    border-radius:2px;
+    transition:background-color .35s ease;
+  }
   .byline{
     display:flex;
     align-items:baseline;
@@ -227,7 +229,7 @@
     body{font-size:17px;}
     .wrap{padding:64px 20px 100px;}
     .intro{padding-bottom:36px;}
-    .seal{width:74px;height:74px;font-size:22px;margin-bottom:22px;}
+    .logo{font-size:clamp(40px,11vw,50px);margin-bottom:26px;}
     .by-name{font-size:19px;}
     .entry-meta .read{margin-left:0;width:100%;}
     .theme-toggle{top:12px;right:12px;width:36px;height:36px;font-size:15px;}
@@ -245,8 +247,8 @@
 
   <header class="intro">
     <p class="eyebrow">随笔 · Essays</p>
-    <h1 class="seal" aria-label="夜话晓言"><span>夜</span><span>话</span><span>晓</span><span>言</span></h1>
-    <p class="byline"><span class="by-tag">文</span><span class="by-name">曾晓鹏</span></p>
+    <h1 class="logo" aria-label="夜话晓言">夜话晓言</h1>
+    <p class="byline"><span class="by-name">曾晓鹏</span></p>
     <p class="epi">入夜成话，及晓成言。</p>
     <p class="deck">这里陆续收存我写下的文字 —— 推演、随笔，与一些把事情想透的尝试。</p>
   </header>
