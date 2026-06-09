@@ -16,9 +16,12 @@
     --ink-soft:#2C3032;
     --oxblood:#7A2A20;
     --oxblood-soft:#9A4034;
+    --gold:#8C6912;
+    --gold-soft:#A9842B;
     --slate:#565B5E;
     --slate-faint:#8A8F90;
     --hair:#C8CBC8;
+    --wm:.07;
     --serif: Georgia, "Times New Roman", "Songti SC", "Source Han Serif SC", "Noto Serif CJK SC", "STSong", "SimSun", serif;
     --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Heiti SC", "Helvetica Neue", Arial, sans-serif;
   }
@@ -30,9 +33,12 @@
       --ink-soft:#C7C6C1;
       --oxblood:#CC6F5C;
       --oxblood-soft:#DD8C7B;
+      --gold:#DCB351;
+      --gold-soft:#E7C778;
       --slate:#9AA0A2;
       --slate-faint:#6E7477;
       --hair:#33383B;
+      --wm:.06;
     }
   }
 
@@ -52,7 +58,7 @@
   }
 
   .wrap{
-    max-width:720px;
+    max-width:980px;
     margin:0 auto;
     padding:104px 28px 140px;
     animation:rise .9s ease both;
@@ -154,16 +160,94 @@
     padding-bottom:46px;
   }
 
+  /* ---- journal (刊物层) ---- */
+  .journals{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    margin-top:72px;
+  }
+  .journal{margin-top:0;min-width:0;--accent:var(--oxblood);--accent-soft:var(--oxblood-soft);}
+  .journal--xiao{--accent:var(--gold);--accent-soft:var(--gold-soft);}
+  .journal--ye{--accent:var(--oxblood);--accent-soft:var(--oxblood-soft);}
+  .journals .journal:first-child{padding-right:46px;}
+  .journals .journal:last-child{padding-left:46px;border-left:1px solid var(--hair);}
+  .journal-head{
+    position:relative;
+    z-index:0;
+    overflow:hidden;
+    border-top:2px solid var(--ink);
+    padding-top:22px;
+    margin-bottom:6px;
+  }
+  .journal-glyph{
+    position:absolute;
+    z-index:-1;
+    top:50%;
+    right:2px;
+    transform:translateY(-50%);
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(92px,20vw,140px);
+    line-height:1;
+    color:var(--accent);
+    opacity:var(--wm);
+    pointer-events:none;
+    user-select:none;
+    transition:color .35s ease, opacity .35s ease;
+  }
+  .journal-kicker{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--slate-faint);
+    font-weight:600;
+    margin:0 0 12px;
+  }
+  .journal-name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(32px,7vw,44px);
+    letter-spacing:.12em;
+    line-height:1.08;
+    color:var(--ink);
+    margin:0 0 12px;
+    transition:color .35s ease;
+  }
+  .journal-name .bk{color:var(--accent-soft);font-weight:400;letter-spacing:0;}
+  .journal-motto{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:17px;
+    color:var(--accent);
+    margin:0 0 10px;
+    letter-spacing:.04em;
+  }
+  .journal-note{
+    font-size:16px;
+    color:var(--ink-soft);
+    line-height:1.8;
+    margin:0;
+    max-width:32em;
+  }
+
   /* ---- archive ---- */
   .sec-eyebrow{
     font-family:var(--sans);
     font-size:12px;
-    letter-spacing:.28em;
-    text-transform:uppercase;
+    letter-spacing:.22em;
     color:var(--slate);
     font-weight:600;
-    margin:54px 0 4px;
+    margin:38px 0 4px;
+    padding-left:18px;
+    position:relative;
     display:flex;align-items:center;gap:14px;
+  }
+  .sec-eyebrow::before{
+    content:"";
+    position:absolute;left:0;top:50%;
+    width:9px;height:1px;
+    background:var(--accent);
   }
   .sec-eyebrow::after{content:"";flex:1;height:1px;background:var(--hair);}
 
@@ -182,7 +266,7 @@
     font-size:12px;
     font-weight:700;
     letter-spacing:.12em;
-    color:var(--oxblood);
+    color:var(--accent);
     display:block;
     margin-bottom:12px;
   }
@@ -195,8 +279,8 @@
     color:var(--ink);
     transition:color .2s ease;
   }
-  .entry-link:hover .entry-title{color:var(--oxblood);}
-  .entry-title .dash{color:var(--oxblood-soft);font-weight:400;padding:0 .15em;}
+  .entry-link:hover .entry-title{color:var(--accent);}
+  .entry-title .dash{color:var(--accent-soft);font-weight:400;padding:0 .15em;}
   .entry-deck{
     font-size:17px;
     color:var(--ink-soft);
@@ -213,7 +297,7 @@
     display:flex;flex-wrap:wrap;gap:6px 18px;
     align-items:baseline;
   }
-  .entry-meta .read{color:var(--oxblood);margin-left:auto;}
+  .entry-meta .read{color:var(--accent);margin-left:auto;}
 
   /* ---- footer ---- */
   .site-foot{
@@ -225,12 +309,21 @@
     line-height:1.8;
   }
 
+  @media (max-width:880px){
+    .journals{grid-template-columns:1fr;margin-top:0;}
+    .journals .journal{margin-top:60px;}
+    .journals .journal:first-child{padding-right:0;}
+    .journals .journal:last-child{padding-left:0;border-left:none;}
+  }
+
   @media (max-width:640px){
     body{font-size:17px;}
     .wrap{padding:64px 20px 100px;}
     .intro{padding-bottom:36px;}
     .logo{font-size:clamp(40px,11vw,50px);margin-bottom:26px;}
     .by-name{font-size:19px;}
+    .journal{margin-top:60px;}
+    .journal-glyph{font-size:78px;top:34px;transform:none;opacity:.05;}
     .entry-meta .read{margin-left:0;width:100%;}
     .theme-toggle{top:12px;right:12px;width:36px;height:36px;font-size:15px;}
   }
@@ -250,36 +343,60 @@
     <h1 class="logo" aria-label="夜话晓言">夜话晓言</h1>
     <p class="byline"><span class="by-name">曾晓鹏</span></p>
     <p class="epi">入夜成话，及晓成言。</p>
-    <p class="deck">这里陆续收存我写下的文字 —— 推演、随笔，与一些把事情想透的尝试。</p>
+    <p class="deck">两册私刻的小刊：《晓言》载推演与论理，《夜话》载读记与随笔。</p>
   </header>
 
-  <p class="sec-eyebrow">宏观经济评论</p>
-  <ol class="entries">
+  <div class="journals">
 
-    <li class="entry">
-      <a class="entry-link" href="dengshuikai.html">
-        <span class="entry-no">01</span>
-        <h2 class="entry-title">等水开<span class="dash">—</span>债务临界、美元换锚与一场结构性萧条</h2>
-        <p class="entry-deck">把美元体系的再锚定，从一串可被估算概率的事件，还原为一条由结构逼出的必经之路。</p>
-        <p class="entry-meta"><span>2026</span><span>货币体系 · 主权债务 · 能源</span><span class="read">阅读 →</span></p>
-      </a>
-    </li>
+  <section class="journal journal--xiao">
+    <header class="journal-head">
+      <span class="journal-glyph" aria-hidden="true">晓</span>
+      <p class="journal-kicker">刊一 · Journal I</p>
+      <h2 class="journal-name" aria-label="晓言"><span class="bk">《</span>晓言<span class="bk">》</span></h2>
+      <p class="journal-motto">及晓成言。</p>
+      <p class="journal-note">技术性的文字：把复杂的事拆开、想透，再讲清楚。</p>
+    </header>
 
-  </ol>
+    <p class="sec-eyebrow">宏观经济评论</p>
+    <ol class="entries">
 
-  <p class="sec-eyebrow">夜诵</p>
-  <ol class="entries">
+      <li class="entry">
+        <a class="entry-link" href="dengshuikai.html">
+          <span class="entry-no">01</span>
+          <h2 class="entry-title">等水开<span class="dash">—</span>债务临界、美元换锚与一场结构性萧条</h2>
+          <p class="entry-deck">把美元体系的再锚定，从一串可被估算概率的事件，还原为一条由结构逼出的必经之路。</p>
+          <p class="entry-meta"><span>2026</span><span>货币体系 · 主权债务 · 能源</span><span class="read">阅读 →</span></p>
+        </a>
+      </li>
 
-    <li class="entry">
-      <a class="entry-link" href="yueliangchuan.html">
-        <span class="entry-no">01</span>
-        <h2 class="entry-title">把最亮的一颗戴在胸上<span class="dash">—</span>一次存在的远航</h2>
-        <p class="entry-deck">撕开《月亮船》的童话薄壳，底下是一句极锋利的断言：一个人，要由一次只属于自己的远航，才能成其为存在。</p>
-        <p class="entry-meta"><span>2026</span><span>《月亮船》读记</span><span class="read">阅读 →</span></p>
-      </a>
-    </li>
+    </ol>
+  </section>
 
-  </ol>
+  <section class="journal journal--ye">
+    <header class="journal-head">
+      <span class="journal-glyph" aria-hidden="true">夜</span>
+      <p class="journal-kicker">刊二 · Journal II</p>
+      <h2 class="journal-name" aria-label="夜话"><span class="bk">《</span>夜话<span class="bk">》</span></h2>
+      <p class="journal-motto">入夜成话。</p>
+      <p class="journal-note">文学性的读物：读诗、读人，与夜里慢下来的随笔。</p>
+    </header>
+
+    <p class="sec-eyebrow">夜诵</p>
+    <ol class="entries">
+
+      <li class="entry">
+        <a class="entry-link" href="yueliangchuan.html">
+          <span class="entry-no">01</span>
+          <h2 class="entry-title">把最亮的一颗戴在胸上<span class="dash">—</span>一次存在的远航</h2>
+          <p class="entry-deck">撕开《月亮船》的童话薄壳，底下是一句极锋利的断言：一个人，要由一次只属于自己的远航，才能成其为存在。</p>
+          <p class="entry-meta"><span>2026</span><span>《月亮船》读记</span><span class="read">阅读 →</span></p>
+        </a>
+      </li>
+
+    </ol>
+  </section>
+
+  </div>
 
   <footer class="site-foot">
     <p>© 2026 夜话晓言 · 曾晓鹏</p>
