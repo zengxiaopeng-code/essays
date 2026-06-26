@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  (function(){var K='ye-theme',r=document.documentElement,s;try{s=localStorage.getItem(K);}catch(e){}if(!s){s=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}r.setAttribute('data-theme',s);})();
+</script>
+<title>夜航 · 睡与死的边界上</title>
+<meta name="description" content="夜里十一点的航班，睡与死之间的一次失神——一篇实验性的抒情短章。">
+<style>
+  :root{
+    --paper:#EBEDEC;
+    --paper-deep:#E3E5E3;
+    --ink:#17191A;
+    --ink-soft:#2C3032;
+    --oxblood:#7A2A20;
+    --oxblood-soft:#9A4034;
+    --slate:#565B5E;
+    --slate-faint:#8A8F90;
+    --hair:#C8CBC8;
+    --serif: Georgia, "Times New Roman", "Songti SC", "Source Han Serif SC", "Noto Serif CJK SC", "STSong", "SimSun", serif;
+    --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Heiti SC", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media screen{
+    [data-theme="dark"]{
+      --paper:#16181A;
+      --paper-deep:#1F2225;
+      --ink:#E9E7E2;
+      --ink-soft:#C7C6C1;
+      --oxblood:#CC6F5C;
+      --oxblood-soft:#DD8C7B;
+      --slate:#9AA0A2;
+      --slate-faint:#6E7477;
+      --hair:#33383B;
+    }
+  }
+  .theme-toggle{
+    position:fixed;
+    top:18px;right:18px;
+    width:40px;height:40px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--hair);
+    border-radius:50%;
+    background:var(--paper);
+    color:var(--oxblood);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1;
+    cursor:pointer;
+    z-index:20;
+    -webkit-tap-highlight-color:transparent;
+    transition:border-color .2s ease, color .2s ease, background-color .35s ease;
+  }
+  .theme-toggle:hover{border-color:var(--oxblood);}
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:18px;
+    line-height:2.0;
+    letter-spacing:.01em;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+    transition:background-color .35s ease, color .35s ease;
+  }
+
+  .wrap{
+    max-width:680px;
+    margin:0 auto;
+    padding:96px 28px 150px;
+    animation:rise .9s ease both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.wrap{animation:none;}}
+
+  /* ---- back to index ---- */
+  .backlink{
+    display:inline-block;
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--slate);
+    text-decoration:none;
+    margin:0 0 40px;
+    transition:color .2s ease;
+  }
+  .backlink:hover{color:var(--oxblood);}
+
+  /* ---- masthead ---- */
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--oxblood);
+    margin:0 0 26px;
+    font-weight:600;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(33px,5.6vw,48px);
+    line-height:1.2;
+    letter-spacing:.01em;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  h1 .accent{color:var(--oxblood);}
+  .subtitle{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(20px,3.6vw,25px);
+    line-height:1.45;
+    letter-spacing:.05em;
+    color:var(--ink-soft);
+    margin:0 0 28px;
+  }
+  .deck{
+    font-size:18px;
+    color:var(--ink-soft);
+    line-height:1.9;
+    margin:0 0 26px;
+    max-width:32em;
+  }
+  .byline{
+    margin:0 0 30px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+  }
+  .by-tag{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--oxblood);
+    font-weight:600;
+  }
+  .by-name{
+    font-family:var(--serif);
+    font-size:19px;
+    letter-spacing:.22em;
+    color:var(--ink);
+  }
+  .meta{
+    font-family:var(--sans);
+    font-size:12.5px;
+    letter-spacing:.06em;
+    color:var(--slate-faint);
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 18px;
+    border-top:1px solid var(--hair);
+    border-bottom:1px solid var(--hair);
+    padding:14px 0;
+    margin:0;
+  }
+
+  /* ---- generic prose ---- */
+  p{margin:0 0 1.4em;}
+  .body{margin-top:44px;}
+  .lede{margin-top:8px;margin-bottom:1.6em;}
+  .lede::first-letter{
+    font-family:var(--serif);
+    float:left;
+    font-size:3.3em;
+    line-height:.84;
+    padding:.06em .14em 0 0;
+    color:var(--oxblood);
+    font-weight:700;
+  }
+  strong{color:var(--oxblood);font-weight:700;}
+
+  /* ---- closing line ---- */
+  .coda{
+    margin:70px 0 0;
+    padding-top:34px;
+    border-top:1px solid var(--hair);
+    font-size:20px;
+    line-height:1.95;
+    color:var(--ink);
+  }
+  .signoff{
+    text-align:right;
+    font-family:var(--serif);
+    font-size:19px;
+    letter-spacing:.22em;
+    color:var(--ink);
+    margin:30px 0 0;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width:640px){
+    body{font-size:17px;line-height:1.95;}
+    .wrap{padding:60px 20px 110px;}
+    .lede::first-letter{font-size:3em;}
+    .coda{font-size:18px;}
+    .theme-toggle{top:12px;right:12px;width:36px;height:36px;font-size:15px;}
+  }
+
+  /* ---- print / export to pdf ---- */
+  @media print{
+    :root{--paper:#fff;--paper-deep:#f4f4f2;}
+    body{background:#fff;color:#000;font-size:11.5pt;line-height:1.75;}
+    .wrap{max-width:none;padding:0;animation:none;}
+    .theme-toggle{display:none;}
+    .coda{page-break-inside:avoid;}
+    a{color:inherit;}
+  }
+</style>
+<!-- GoatCounter 流量统计 -->
+<script data-goatcounter="https://rtyyhxy.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="切换日间 / 夜间" title="日间 / 夜间">☾</button>
+
+<main class="wrap">
+
+  <a class="backlink" href="index.html">← 夜话晓言</a>
+
+  <p class="eyebrow">梦呓短篇</p>
+  <h1>夜航<span class="accent">。</span></h1>
+  <p class="subtitle">睡与死的边界上</p>
+
+  <p class="byline"><span class="by-tag">文</span><span class="by-name">曾晓鹏</span></p>
+
+  <div class="meta">
+    <span>深夜 · 高空 · 睡与死 · 风声</span>
+    <span>2026</span>
+  </div>
+
+  <div class="body">
+
+    <p class="lede">我乘坐在夜里十一点的航线。</p>
+
+    <p>拥挤的机舱里没有人说话，大多拿毛毯裹着身体。我也说不出话，用半只身子往下挪，又无法伸直。</p>
+
+    <p>闭上眼，燃烧的引擎在暗处轰鸣，在耳边又像是呼呼的风声。</p>
+
+    <p>高空的气压，像一块布越裹越紧。让我感到，飞机的噪音越来越小。呼吸与意识，也越来难以察觉。我分不清是生理的失聪，还是入睡的前瞬。</p>
+
+    <p>深夜里，飞机驶向远边，如影子飘过黝黑的海面。穿过的黯淡云层无穷无际，也没有月亮和星星。轰轰轰，声音飞向远边。我忘记了我睡了多久。</p>
+
+    <p>如果我不再睁开眼，死后的世界，是否就是这一片风声呢？</p>
+
+  </div>
+
+  <p class="signoff">曾晓鹏</p>
+
+</main>
+
+<script>
+  (function(){var K='ye-theme',r=document.documentElement,b=document.getElementById('themeToggle');function ic(){b.textContent=r.getAttribute('data-theme')==='dark'?'☀':'☾';}ic();b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(K,n);}catch(e){}ic();});})();
+</script>
+</body>
+</html>
